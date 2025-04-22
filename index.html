@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lexend Skriftprøve</title>
+  <!-- Poppins for UI, Lexend for prøvetekst -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
+  <style>
+    /* Wrapper for hele komponenten */
+    .lex-tester-wrapper {
+      font-family: 'Poppins', sans-serif;
+      background-color: #fff;
+      color: #000;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: start;
+      min-height: 100vh;
+    }
+    /* Selve beholderen */
+    .lex-container {
+      width: 100%;
+      max-width: 600px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 0;
+      margin: 20px;
+    }
+    /* Felles label-stil */
+    .lex-label {
+      font-size: 1rem;
+      color: #333;
+      margin: 12px 0 4px;
+    }
+    /* Slider-boks */
+    .lex-slider-container {
+      display: flex;
+      align-items: center;
+      width: 100%;
+    }
+    .lex-font-size-range {
+      flex: 1;
+      height: 30px;
+      background: #f5f5f5;
+      border: none;
+      border-radius: 5px;
+      -webkit-appearance: none;
+    }
+    .lex-font-size-range::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 16px;
+      height: 16px;
+      background: #000;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+    .lex-font-size-value {
+      margin-left: 8px;
+      font-size: 1rem;
+      color: #333;
+      min-width: 44px;
+      text-align: right;
+    }
+    /* Vekt-velger */
+    .lex-current-weight {
+      font-size: 1rem;
+      color: #333;
+      margin: 8px 0;
+    }
+    .lex-weight-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 16px;
+    }
+    .lex-weight-button {
+      background-color: #e0e0e0;
+      color: #000;
+      border: none;
+      padding: 6px 10px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: background 0.3s, transform 0.1s;
+    }
+    .lex-weight-button:hover {
+      background-color: #000;
+      color: #fff;
+    }
+    .lex-weight-button:active {
+      transform: scale(0.95);
+    }
+    /* Tekstområde */
+    .lex-textarea {
+      font-family: 'Lexend', sans-serif;
+      font-size: 2rem;
+      font-weight: 400;
+      width: 100%;
+      min-height: 150px;
+      background-color: #f5f5f5;
+      color: #000;
+      border: none;
+      border-radius: 5px;
+      resize: vertical;
+      padding: 10px;
+      box-sizing: border-box;
+      transition: all 0.3s ease;
+    }
+  </style>
+</head>
+<body>
+  <div class="lex-tester-wrapper">
+    <div class="lex-container">
+      <label class="lex-label" for="lexFontSize">Skriftstørrelse <span id="lexFontSizeValue">32px</span></label>
+      <div class="lex-slider-container">
+        <input class="lex-font-size-range" id="lexFontSize" type="range" min="12" max="100" value="32">
+        <div class="lex-font-size-value" id="lexFontSizeValue">32px</div>
+      </div>
+      <label class="lex-label">Velg skriftvekt:</label>
+      <div class="lex-current-weight" id="lexCurrentWeight">Valgt vekt: Regular</div>
+      <div class="lex-weight-buttons">
+        <button class="lex-weight-button" onclick="setFontWeight(100,'Tynn')">Tynn</button>
+        <button class="lex-weight-button" onclick="setFontWeight(200,'Ekstra lett')">Ekstra lett</button>
+        <button class="lex-weight-button" onclick="setFontWeight(300,'Lett')">Lett</button>
+        <button class="lex-weight-button" onclick="setFontWeight(400,'Regular')">Regular</button>
+        <button class="lex-weight-button" onclick="setFontWeight(500,'Medium')">Medium</button>
+        <button class="lex-weight-button" onclick="setFontWeight(600,'Semibold')">Semibold</button>
+        <button class="lex-weight-button" onclick="setFontWeight(700,'Bold')">Bold</button>
+        <button class="lex-weight-button" onclick="setFontWeight(800,'Ekstra bold')">Ekstra bold</button>
+        <button class="lex-weight-button" onclick="setFontWeight(900,'Black')">Black</button>
+      </div>
+      <textarea class="lex-textarea" id="lexTester">Norge har mange utfordringer. At folk vil jobbe, bør ikke være en av dem.</textarea>
+    </div>
+  </div>
+
+  <script>
+    const fontSizeSlider = document.getElementById('lexFontSize');
+    const fontSizeValue = document.getElementById('lexFontSizeValue');
+    const tester = document.getElementById('lexTester');
+    const currentWeightLabel = document.getElementById('lexCurrentWeight');
+
+    fontSizeSlider.addEventListener('input', () => {
+      const size = fontSizeSlider.value;
+      tester.style.fontSize = size + 'px';
+      fontSizeValue.textContent = size + 'px';
+    });
+
+    function setFontWeight(weight, label) {
+      tester.style.fontWeight = weight;
+      currentWeightLabel.textContent = 'Valgt vekt: ' + label;
+    }
+  </script>
+</body>
+</html>
