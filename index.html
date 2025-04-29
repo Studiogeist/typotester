@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="no">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,9 +10,10 @@
   <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
   <style>
     body {
-        padding: 0;
-        margin: 0;
+      padding: 0;
+      margin: 0;
     }
+
     /* Wrapper for hele komponenten */
     .lex-tester-wrapper {
       font-family: 'Poppins', sans-serif;
@@ -21,6 +23,7 @@
       margin: 0;
       display: flex;
     }
+
     /* Selve beholderen */
     .lex-container {
       width: 100%;
@@ -31,19 +34,23 @@
       padding: 0;
       margin: 0px;
     }
+
     /* Felles label-stil - Tykkere etiketter */
     .lex-label {
       font-size: 1.25rem;
       color: #333;
-      font-weight: 600; /* Økt tykkelse på teksten */
+      font-weight: 600;
+      /* Økt tykkelse på teksten */
       margin: 16px 0 8px;
     }
+
     /* Slider-boks */
     .lex-slider-container {
       display: flex;
       align-items: center;
       width: 100%;
     }
+
     .lex-font-size-range,
     .lex-letter-spacing-range,
     .lex-line-height-range {
@@ -54,6 +61,7 @@
       border-radius: 5px;
       -webkit-appearance: none;
     }
+
     .lex-font-size-range::-webkit-slider-thumb,
     .lex-letter-spacing-range::-webkit-slider-thumb,
     .lex-line-height-range::-webkit-slider-thumb {
@@ -64,6 +72,7 @@
       border-radius: 50%;
       cursor: pointer;
     }
+
     .lex-font-size-value,
     .lex-letter-spacing-value,
     .lex-line-height-value {
@@ -73,18 +82,21 @@
       min-width: 60px;
       text-align: right;
     }
+
     /* Vekt-velger */
     .lex-current-weight {
       font-size: 1.25rem;
       color: #333;
       margin: 12px 0;
     }
+
     .lex-weight-buttons {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
       margin-bottom: 20px;
     }
+
     .lex-weight-button {
       background-color: #e0e0e0;
       color: #000;
@@ -95,13 +107,16 @@
       border-radius: 6px;
       transition: background 0.3s, transform 0.1s;
     }
+
     .lex-weight-button:hover {
       background-color: #000;
       color: #fff;
     }
+
     .lex-weight-button:active {
       transform: scale(0.95);
     }
+
     /* Tekstområde */
     .lex-textarea {
       font-family: 'Lexend', sans-serif;
@@ -120,6 +135,7 @@
     }
   </style>
 </head>
+
 <body>
   <div class="lex-tester-wrapper">
     <div class="lex-container">
@@ -129,11 +145,6 @@
         <input class="lex-font-size-range" id="lexFontSize" type="range" min="12" max="100" value="32">
       </div>
 
-      <!-- Letter Spacing Slider -->
-      <label class="lex-label" for="lexLetterSpacing">Bokstavavstand <span id="lexLetterSpacingValue">0px</span></label>
-      <div class="lex-slider-container">
-        <input class="lex-letter-spacing-range" id="lexLetterSpacing" type="range" min="-5" max="20" value="0">
-      </div>
 
       <!-- Line Height Slider -->
       <label class="lex-label" for="lexLineHeight">Linjehøyde <span id="lexLineHeightValue">1.5</span></label>
@@ -155,7 +166,8 @@
         <button class="lex-weight-button" onclick="setFontWeight(900,'Black')">Black</button>
       </div>
 
-      <textarea class="lex-textarea" id="lexTester" oninput="checkDefaultText()">Norge har mange utfordringer. At folk vil jobbe, bør ikke være en av dem.</textarea>
+      <textarea class="lex-textarea" id="lexTester" oninput="checkDefaultText()">Norge har mange utfordringer. At folk
+        vil jobbe, bør ikke være en av dem.</textarea>
     </div>
   </div>
 
@@ -201,4 +213,5 @@
     }
   </script>
 </body>
+
 </html>
